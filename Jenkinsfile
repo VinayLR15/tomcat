@@ -10,7 +10,6 @@ pipeline {
         stage('Checkout') {
             steps {
                 git 'https://github.com/VinayLR15/tomcat.git'
-'
             }
         }
 
@@ -22,8 +21,8 @@ pipeline {
 
         stage('Deploy WAR') {
             steps {
-                // Replace with your actual remote details
-                sh 'scp target/my-webapp.war user@your-server:/path/to/tomcat/webapps/'
+                // Replace these with actual credentials or use SSH agent credentials in Jenkins
+                sh 'scp target/MymavenWebApp01.war user@your-server:/opt/tomcat/webapps/'
             }
         }
     }

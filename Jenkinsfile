@@ -22,7 +22,7 @@ pipeline {
         stage('Deploy WAR') {
             steps {
                 // Replace these values with real ones
-                sh 'scp target/MymavenWebApp01.war vinay@192.168.1.50:/opt/tomcat/webapps/'
+                sh 'scp target/MymavenWebApp01.war vinay@192.168.201.62:/opt/tomcat/webapps/'
             }
         }
     }

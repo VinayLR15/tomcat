@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     tools {
-        maven 'Maven'     // <-- Must match exactly what's configured in Jenkins
-        jdk 'JDK'         // <-- Ditto
+        maven 'Maven'     // Must match exactly with what is configured in Jenkins global tools
+        jdk 'JDK'         // Same here
     }
 
     stages {
@@ -21,11 +21,11 @@ pipeline {
 
         stage('Deploy WAR') {
             steps {
-                // Replace these values with real ones
-                sh 'scp target/MymavenWebApp01.war vinay-l-r@192.168.201.62:/opt/tomcat/webapps/'
-
+                // Using SCP with -o StrictHostKeyChecking=no to suppress interactive prompts
+                sh '''
+                    scp -o StrictHostKeyChecking=no target/MymavenWebApp01.war vinay-l-r@192.168.201.62:/opt/tomcat/webapps/
+                '''
             }
         }
     }
 }
-
